@@ -210,7 +210,7 @@ def sketch_from_sequence(seq) -> Sketch:
                 last_main_idx = node_idx
                 entityId = str(node_idx)
                 # Don't create External or Stop entity
-                if op.label not in (EntityType.External, EntityType.Stop):
+                if op.label not in (EntityType.External, EntityType.Stop) and op.label in [EntityType.Point, EntityType.Line, EntityType.Circle, EntityType.Arc]:
                     entities[entityId] = ENTITY_TYPE_TO_CLASS[op.label](entityId)
                     # Extract parameters for numerical entities
                     for param_id, val in op.parameters.items():
